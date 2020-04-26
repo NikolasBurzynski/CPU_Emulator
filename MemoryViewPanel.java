@@ -49,8 +49,8 @@ public class MemoryViewPanel {
 		decimalPanel.setLayout(new GridLayout(0,1));
 		hexPanel.setLayout(new GridLayout(0,1));
 		
-		JTextField dataHex[] = new JTextField[upper-lower];
-		JTextField dataDecimal[] = new JTextField[upper-lower];
+		dataHex = new JTextField[upper-lower];
+		dataDecimal = new JTextField[upper-lower];
 		
 		for(int i = lower; i < upper; i++) {
 			numPanel.add(new JLabel(i+": ", JLabel.RIGHT));
@@ -93,13 +93,9 @@ public class MemoryViewPanel {
 		}
 		if(scroller != null && model != null) {
 			JScrollBar bar= scroller.getVerticalScrollBar();
-		if (model.getChangedDataIndex() >= lower &&
-				model.getChangedDataIndex() < upper &&
-				// the following just checks createMemoryDisplay has run
-				dataDecimal != null) {
-			Rectangle bounds =
-					dataDecimal[model.getChangedDataIndex()-lower].getBounds();
-			bar.setValue(Math.max(0, bounds.y - 15*bounds.height));
+			if (model.getChangedDataIndex() >= lower && model.getChangedDataIndex() < upper && dataDecimal != null) {
+				Rectangle bounds = dataDecimal[model.getChangedDataIndex()-lower].getBounds();
+				bar.setValue(Math.max(0, bounds.y - 15*bounds.height));
 			}
 		}
 	}
