@@ -49,6 +49,11 @@ public class MemoryViewPanel {
 		decimalPanel.setLayout(new GridLayout(0,1));
 		hexPanel.setLayout(new GridLayout(0,1));
 		
+		innerPanel.add(numPanel, BorderLayout.LINE_START);
+		innerPanel.add(decimalPanel, BorderLayout.CENTER);
+		innerPanel.add(hexPanel, BorderLayout.LINE_END);
+
+		
 		dataHex = new JTextField[upper-lower];
 		dataDecimal = new JTextField[upper-lower];
 		
